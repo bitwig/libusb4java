@@ -6,7 +6,13 @@
   <artifactId>libusb4java</artifactId>
   <packaging>pom</packaging>
   <name>libusb4java</name>
-  <version>1.3.1-SNAPSHOT</version>
+  <version>${revision}</version>
+
+  <properties>
+    <revision>1.3.1-BITWIG</revision>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <url>https://github.com/usb4java/libusb4java/</url>
   <description>The native JNI library used by usb4java</description>
   <inceptionYear>2011</inceptionYear>
@@ -56,11 +62,6 @@
     </developer>
   </developers>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <nativeVersion>${project.version}</nativeVersion>
-  </properties>
-
   <scm>
     <connection>scm:git:git://github.com/usb4java/${project.artifactId}.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/usb4java/${project.artifactId}.git</developerConnection>
@@ -73,16 +74,53 @@
     <url>https://github.com/usb4java/${project.artifactId}/issues</url>
   </issueManagement>
 
+<!--
   <prerequisites>
     <maven>3.0.5</maven>
   </prerequisites>
+-->
+
+  <modules>
+		<module>macos-aarch64</module>
+		<module>macos-x64</module>
+	</modules>
 
   <build>
     <plugins>
       <plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<updatePomFile>true</updatePomFile>
+				</configuration>
+				<executions>
+					<execution>
+						<id>flatten</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>flatten</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>flatten.clean</id>
+						<phase>clean</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.22.0</version>
+        <version>3.0.0-M5</version>
+        <configuration>
+           <parallel>methods</parallel>
+           <threadCount>8</threadCount>
+           <perCoreThreadCount>true</perCoreThreadCount>
+           <printSummary>true</printSummary>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

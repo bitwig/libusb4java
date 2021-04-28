@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.usb4java</groupId>
+        <artifactId>libusb4java</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>libusb4java-darwin-aarch64</artifactId>
+
+    <build>
+        <plugins>
+          <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.2.0</version>
+          <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${basedir}/target/tmp</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${basedir}/../target/build/darwin-arm64/libusb4java/src/</directory>
+                  <includes>
+                          <include>libusb4java.dylib</include>
+                  </includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          </executions>
+          </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>${basedir}/target/tmp</directory>
+                <targetPath>org/usb4java/darwin-aarch64/</targetPath>
+            </resource>
+        </resources>
+    </build>
+
+</project>
