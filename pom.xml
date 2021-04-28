@@ -83,6 +83,8 @@
   <modules>
 		<module>macos-aarch64</module>
 		<module>macos-x64</module>
+		<module>linux-x64</module>
+		<module>windows-x64</module>
 	</modules>
 
   <build>
