@@ -20,13 +20,8 @@ set LIBUSB_VERSION=1.0.24
 set CURRENT=%cd%
 set PROJECT_DIR=%~dp0..\..
 set OS=win32
-if /i "%Platform%" == "x64" (
-    set ARCH=x86-64
-    set LIBUSB_ARCH=MS64
-) else (
-    set ARCH=x86
-    set LIBUSB_ARCH=MS32
-)
+set ARCH=x86-64
+set LIBUSB_ARCH=MS64
 set TARGET_DIR=%PROJECT_DIR%\target
 set BUILD_DIR=%TARGET_DIR%\build\%OS%-%ARCH%
 set ROOT_DIR=%BUILD_DIR%\root
