@@ -41,7 +41,7 @@
         <resources>
             <resource>
                 <directory>${basedir}/target/tmp</directory>
-                <targetPath>org/usb4java/darwin-x86_64/</targetPath>
+                <targetPath>org/usb4java/darwin-x86-64/</targetPath>
             </resource>
         </resources>
     </build>
