@@ -26,33 +26,15 @@
               <outputDirectory>${basedir}/target/tmp</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${basedir}/../target/build/win32-x86-64/src/</directory>
+                  <directory>${basedir}/../dists/builds/win32-x86-64/</directory>
                   <includes>
-                          <include>usb4java.dll</include>
+                          <include>libusb4java.dll</include>
                   </includes>
                 </resource>
               </resources>
             </configuration>
           </execution>
           </executions>
-          </plugin>
-          <plugin>
-            <groupId>com.coderplus.maven.plugins</groupId>
-            <artifactId>copy-rename-maven-plugin</artifactId>
-            <version>1.0.1</version>
-            <executions>
-              <execution>
-                <id>rename-file</id>
-                <phase>validate</phase>
-                <goals>
-                  <goal>rename</goal>
-                </goals>
-                <configuration>
-                  <sourceFile>${basedir}/target/tmp/usb4java.dll</sourceFile>
-                  <destinationFile>${basedir}/target/tmp/libusb4java.dll</destinationFile>
-                </configuration>
-              </execution>
-            </executions>
           </plugin>
         </plugins>
 

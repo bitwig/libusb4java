@@ -26,7 +26,7 @@
               <outputDirectory>${basedir}/target/tmp</outputDirectory>
               <resources>
                 <resource>
-                  <directory>${basedir}/../target/build/linux-x86_64/libusb4java/src/</directory>
+                  <directory>${basedir}/../dists/builds/linux-x86_64/</directory>
                   <includes>
                           <include>libusb4java.so</include>
                   </includes>
